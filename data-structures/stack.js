@@ -51,13 +51,16 @@ What's the time complexity?
  */
 
 function Stack(capacity) {
-  // implement me...
+  this.count = 0;
+  this.storage = {};
 }
 
 Stack.prototype.push = function(value) {
-  // implement me...
+  this.count += 1;
+  this.storage[this.count] = value;
+  return this.count;
 };
-// Time complexity:
+// Time complexity: Constant
 
 Stack.prototype.pop = function() {
   // implement me...
@@ -70,7 +73,7 @@ Stack.prototype.peek = function() {
 // Time complexity:
 
 Stack.prototype.count = function() {
-  // implement me...
+  return this.count;
 };
 // Time complexity:
 
