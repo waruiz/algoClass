@@ -51,25 +51,77 @@ What's the time complexity?
  */
 
 function Queue(capacity) {
-  // implement me...
+  this.storage = {
+    value: null,
+    next: null,
+  };
 }
 
 Queue.prototype.enqueue = function(value) {
-  // implement me...
+  let queueItem = this.storage;
+  let count = 0;
+  if (queueItem.value === null) {
+    this.storage = {
+      value,
+      next: null,
+    };
+    count++;
+  } else {
+    count = 1;
+    while (queueItem.next !== null) {
+      count++;
+      queueItem = queueItem.next;
+    }
+    queueItem.next = {
+      value,
+      next: null,
+    };
+    count++;
+  }
+  console.log(count);
+  return count;
 };
 // Time complexity:
 
 Queue.prototype.dequeue = function() {
-  // implement me...
+  if (this.storage) {
+    let oldestItem = this.storage.value;
+    this.storage = this.storage.next;
+    console.log(oldestItem);
+    return oldestItem;
+  } else {
+    console.log('Queue is empty');
+    return null;
+  }
 };
 // Time complexity:
 
 Queue.prototype.peek = function() {
-  // implement me...
+  if (this.storage) {
+    let oldestItem = this.storage.value;
+    console.log(oldestItem);
+    return oldestItem;
+  } else {
+    console.log('Queue is empty');
+    return null;
+  }
 };
 
 Queue.prototype.count = function() {
-  // implement me...
+  let total = 0;
+  if (this.storage) {
+    let queueItem = this.storage;
+    total = 1;
+    while (queueItem.next !== null) {
+      total++;
+      queueItem = queueItem.next;
+    }
+    console.log(total);
+    return total;
+  } else {
+    console.log(total);
+    return total;
+  }
 };
 // Time complexity:
 
@@ -86,3 +138,18 @@ Queue.prototype.count = function() {
 
 
  */
+
+// Tests
+let myQueue = new Queue();
+myQueue.enqueue('a');
+myQueue.enqueue('b');
+myQueue.enqueue('c');
+myQueue.dequeue();
+myQueue.enqueue('d');
+myQueue.peek();
+myQueue.dequeue();
+myQueue.peek();
+myQueue.count();
+myQueue.dequeue();
+myQueue.dequeue();
+myQueue.dequeue();
