@@ -78,32 +78,27 @@ Queue.prototype.enqueue = function(value) {
     };
     count++;
   }
-  console.log(count);
   return count;
 };
-// Time complexity:
+// Time complexity: O(n)
 
 Queue.prototype.dequeue = function() {
   if (this.storage) {
     let oldestItem = this.storage.value;
     this.storage = this.storage.next;
-    console.log(oldestItem);
     return oldestItem;
   } else {
-    console.log('Queue is empty');
-    return null;
+    return 'Queue is empty';
   }
 };
-// Time complexity:
+// Time complexity: O(1)
 
 Queue.prototype.peek = function() {
   if (this.storage) {
     let oldestItem = this.storage.value;
-    console.log(oldestItem);
     return oldestItem;
   } else {
-    console.log('Queue is empty');
-    return null;
+    return 'Queue is empty';
   }
 };
 
@@ -116,14 +111,12 @@ Queue.prototype.count = function() {
       total++;
       queueItem = queueItem.next;
     }
-    console.log(total);
     return total;
   } else {
-    console.log(total);
     return total;
   }
 };
-// Time complexity:
+// Time complexity: O(n)
 
 
 
