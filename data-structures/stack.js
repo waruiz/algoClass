@@ -132,15 +132,6 @@ You are given three towers (stacks) and N disks, each of different size. You can
 The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
  */
 
- // Tests
- const myStack = new Stack();
- myStack.count();
- myStack.push('whale');
- myStack.count();
- myStack.contains('whale');
- myStack.push('pelican');
- myStack.push('tucan');
- myStack.until('baby');
-//  myStack.peek();
-//  myStack.pop();
-//  myStack.count();
+module.exports = {
+  Stack,
+};
