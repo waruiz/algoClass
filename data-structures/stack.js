@@ -51,32 +51,73 @@ What's the time complexity?
  */
 
 function Stack(capacity) {
-  this.count = 0;
+  this.capacity = capacity;
+  this.total = 0;
   this.storage = {};
 }
 
 Stack.prototype.push = function(value) {
-  this.count += 1;
-  this.storage[this.count] = value;
-  return this.count;
+  if (this.capacity >= this.total || this.capacity === undefined) {
+    this.total += 1;
+    this.storage[this.total] = value;
+    return this.total;
+  } else {
+    return "Max capacity already reached. Remove element before adding a new one.";
+  }
 };
 // Time complexity: Constant
 
 Stack.prototype.pop = function() {
-  // implement me...
+  if (this.total !== 0) {
+    const last = this.storage[this.total];
+    delete this.storage[this.total];
+    this.total -= 1;
+    return last;
+  }
+  return null;
 };
-// Time complexity:
+// Time complexity: Constant
 
 Stack.prototype.peek = function() {
-  // implement me...
+  if (this.total) {
+    console.log(this.storage[this.total]);
+    return this.storage[this.total];
+  }
+  return null;
 };
-// Time complexity:
+// Time complexity: Constant
 
 Stack.prototype.count = function() {
-  return this.count;
+  console.log(this.total);
+  return this.total;
 };
-// Time complexity:
+// Time complexity: Constant
 
+Stack.prototype.contains = function (val) {
+  for (let key in this.storage) {
+    if (this.storage[key] === val) {
+      console.log(true);
+      return true;
+    }
+  }
+  console.log(false);
+  return false;
+};
+// Time Complexity: Linear
+
+Stack.prototype.until = function (val) {
+  let round = 0;
+  while (this.total - round) {
+    if (this.storage[this.total - round] === val) {
+      console.log(round);
+      return round;
+    }
+    round++;
+  }
+  console.log('Item not in stack');
+  return 'Item not in stack';
+};
+// Time Complexity: Linear
 
 /*
 *** Exercises:
@@ -96,3 +137,16 @@ You are given three towers (stacks) and N disks, each of different size. You can
    3. no disk can be placed on top of a disk that is smaller than it
 The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
  */
+
+ // Tests
+ const myStack = new Stack();
+ myStack.count();
+ myStack.push('whale');
+ myStack.count();
+ myStack.contains('whale');
+ myStack.push('pelican');
+ myStack.push('tucan');
+ myStack.until('baby');
+//  myStack.peek();
+//  myStack.pop();
+//  myStack.count();
