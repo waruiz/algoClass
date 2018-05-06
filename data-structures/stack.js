@@ -80,7 +80,6 @@ Stack.prototype.pop = function() {
 
 Stack.prototype.peek = function() {
   if (this.total) {
-    console.log(this.storage[this.total]);
     return this.storage[this.total];
   }
   return null;
@@ -88,7 +87,6 @@ Stack.prototype.peek = function() {
 // Time complexity: Constant
 
 Stack.prototype.count = function() {
-  console.log(this.total);
   return this.total;
 };
 // Time complexity: Constant
@@ -96,11 +94,9 @@ Stack.prototype.count = function() {
 Stack.prototype.contains = function (val) {
   for (let key in this.storage) {
     if (this.storage[key] === val) {
-      console.log(true);
       return true;
     }
   }
-  console.log(false);
   return false;
 };
 // Time Complexity: Linear
@@ -109,12 +105,10 @@ Stack.prototype.until = function (val) {
   let round = 0;
   while (this.total - round) {
     if (this.storage[this.total - round] === val) {
-      console.log(round);
       return round;
     }
     round++;
   }
-  console.log('Item not in stack');
   return 'Item not in stack';
 };
 // Time Complexity: Linear
