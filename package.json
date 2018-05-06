@@ -1,0 +1,23 @@
+{
+  "name": "algoclass",
+  "version": "1.0.0",
+  "description": "Welcome to the exercises. This is where the magic happens!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waruiz/algoClass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waruiz/algoClass/issues"
+  },
+  "homepage": "https://github.com/waruiz/algoClass#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  }
+}
