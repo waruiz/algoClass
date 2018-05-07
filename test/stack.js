@@ -1,7 +1,7 @@
 const chai = require('chai');
 const should = chai.should();
 
-const { Stack } = require('../data-structures/stack.js');
+const { Stack, sortStack } = require('../data-structures/stack.js');
 
 describe('Stack data structure', function () {
   before(function () {
@@ -48,7 +48,7 @@ describe('A stack that contains integers', () => {
   before(() => {
     numStack = new Stack();
   });
-  it('should reveal minimum value', () => {
+  it('should reveal minimum value', function () {
     numStack.push(10);
     numStack.push(2);
     numStack.push(34);
@@ -57,5 +57,8 @@ describe('A stack that contains integers', () => {
     numStack.min().should.equal(2);
     numStack.push(-7);
     numStack.min().should.equal(-7);
-  })
+  });
+  it('should sort an unsorted object', function () {
+    sortStack(numStack).storage.should.eql({1: -7, 2: 2, 3: 4, 4: 10, 5: 17, 6: 34});
+  });
 });
