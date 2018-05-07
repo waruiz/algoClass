@@ -144,6 +144,43 @@ Stack.prototype.min = function () {
 };
 // Time complexity: O(n)
 
+const sortStack = function (oldStack) {
+  let sorted = new Stack();
+  let sortArray = [];
+  for (let i in oldStack.storage) {
+    console.log(sortArray)
+    if (sortArray.length === 0) {
+      sortArray.push(oldStack.storage[i]);
+    } else {
+      sortArray = recurse(oldStack.storage[i], sortArray);
+    }
+  }
+  for (let j = 0; j < sortArray.length; j++) {
+    sorted.push(sortArray[j]);
+  }
+  return sorted;
+};
+
+const recurse = function (val, arr) {
+  if (val >= arr[arr.length - 1]) {
+    arr.push(val);
+    return arr;
+  } else if (val <= arr[0]) {
+    arr.unshift(val);
+    return arr;
+  } else {
+    let midPoint = Math.floor(arr.length / 2);
+    if (val > arr[midPoint]) {
+      arr = arr.slice(0, midPoint + 1).concat( recurse(val, arr.slice(midPoint + 1)) );
+      return arr;
+    } else if (val <= arr[midPoint]) {
+      arr = recurse(val, arr.slice(0, midPoint)).concat(arr.slice(midPoint));
+      return arr;
+    }
+  }
+};
+
 module.exports = {
   Stack,
+  sortStack,
 };
