@@ -130,7 +130,19 @@ You are given three towers (stacks) and N disks, each of different size. You can
    2. when moving a disk, you can only use pop (remove the top element) and push (add to the top of a stack)
    3. no disk can be placed on top of a disk that is smaller than it
 The disks begin on tower#1. Write a function that will move the disks from tower#1 to tower#3 in such a way that none of the constraints are violated.
- */
+*/
+
+// 1.
+Stack.prototype.min = function () {
+  let minimum;
+  for (let item in this.storage) {
+    if (this.storage[item] < minimum || minimum === undefined) {
+      minimum = this.storage[item];
+    }
+  }
+  return minimum;
+};
+// Time complexity: O(n)
 
 module.exports = {
   Stack,
