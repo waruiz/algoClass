@@ -132,17 +132,6 @@ Queue.prototype.count = function() {
 
  */
 
-// Tests
-let myQueue = new Queue();
-myQueue.enqueue('a');
-myQueue.enqueue('b');
-myQueue.enqueue('c');
-myQueue.dequeue();
-myQueue.enqueue('d');
-myQueue.peek();
-myQueue.dequeue();
-myQueue.peek();
-myQueue.count();
-myQueue.dequeue();
-myQueue.dequeue();
-myQueue.dequeue();
+module.exports = {
+  Queue,
+}
