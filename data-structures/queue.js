@@ -1,3 +1,5 @@
+const { Stack } = require('./stack.js');
+
 /*
 
 QUEUE
@@ -132,6 +134,40 @@ Queue.prototype.count = function() {
 
  */
 
+const TwoStackQueue = function () {
+  this.masterQ = new Stack();
+  this.tempQ = new Stack();
+};
+
+TwoStackQueue.prototype.enqueue = function (value) {
+  if (this.masterQ.count() === 0) {
+    this.masterQ.push(value);
+    return this.masterQ.count();
+  } else {
+    while (this.masterQ.count() > 0) {
+      this.tempQ.push( this.masterQ.pop() );
+    }
+    this.tempQ.push(value);
+    while (this.tempQ.count() > 0) {
+      this.masterQ.push( this.tempQ.pop() );
+    }
+    return this.masterQ.count();
+  }
+};
+
+TwoStackQueue.prototype.dequeue = function () {
+  return this.masterQ.pop();
+};
+
+TwoStackQueue.prototype.peek = function () {
+  return this.masterQ.peek();
+};
+
+TwoStackQueue.prototype.count = function () {
+  return this.masterQ.count();
+};
+
 module.exports = {
   Queue,
+  TwoStackQueue,
 }
